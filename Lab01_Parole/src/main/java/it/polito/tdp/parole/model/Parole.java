@@ -1,24 +1,38 @@
 package it.polito.tdp.parole.model;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Parole {
 		
+	LinkedList<String> elencoParole;
+	
+	
 	public Parole() {
-		//TODO
+		
+		this.elencoParole = new LinkedList<String>();
 	}
 	
 	public void addParola(String p) {
-		//TODO
+		this.elencoParole.add(p);
+		
 	}
 	
 	public List<String> getElenco() {
-		//TODO
-		return null;
+		Collections.sort(this.elencoParole, new ComparatoreParole());
+		return this.elencoParole;
 	}
 	
 	public void reset() {
-		// TODO
+		
+		for(int i = 0 ; i<this.elencoParole.size();i++) {
+			this.elencoParole.removeAll(elencoParole);
+		}
+	}
+	
+	public void cancellaSelezionato(String s) {
+		this.elencoParole.remove(s);
 	}
 
 }
